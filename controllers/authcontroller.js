@@ -13,9 +13,16 @@ const registeruser = async (req, res) => {
       return res.status(400).json({ message: "User already exists" });
     }
     const pass = await bcrypt.hash(password, 10);
-    const newuser = await usermodel.create({ fullname, email, password: pass });
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+    const otpexpiry = new Date(Date.now() + 10 * 60 * 1000);
+    const newuser = await usermodel.create({
+      fullname,
+      email,
+      password: pass,
+      otp,
+      otpexpiry,
+    });
     if (newuser) {
-      const otp = Math.floor(100000 + Math.random() * 900000).toString();
       const message = `Welcome to SHopnest , ${fullname} , We are excited to have you as part of our community . to completed your registraion please use the following otp your otp for shopnest registarion us ${otp}`;
       await sendemail(
         email,
@@ -24,10 +31,7 @@ const registeruser = async (req, res) => {
       );
       res.status(200).json({
         _id: newuser._id,
-        name: newuser.fullname,
-        email: newuser.email,
-        role: newuser.role,
-        token:await generatetoken(newuser._id),
+        message: "otp sent to email , please verify",
       });
     } else {
       res.status(400).json({ message: "invalid user data" });
@@ -36,7 +40,39 @@ const registeruser = async (req, res) => {
     console.error(err.message);
   }
 };
-
+const verifyotp = async (req, res, next) => {
+  try {
+    const { email, otp } = req.body;
+    const user = await usermodel.findOne({ email });
+    if (!user) {
+      return res
+        .status(404)
+        .json({ message: "user not found with this email" });
+    }
+    if (user.verified) {
+      return res.status(400).json({ message: "user already verified" });
+    }
+    if (user.otp !== otp) {
+      return res.status(400).json({ message: "invalid otp" });
+    }
+    if (user.otpexpiry < new Date()) {
+      return res.status(400).json({ message: "otp expired" });
+    }
+    user.verified = true;
+    user.otp = undefined;
+    user.otpexpiry = undefined;
+    await user.save();
+    res.status(200).json({
+      _id: user._id,
+      name: user.fullname,
+      email: user.email,
+      role: user.role,
+      token: await generatetoken(user._id),
+    });
+  } catch (err) {
+    res.status(400).json({ message: "unable to verify otp" });
+  }
+};
 // login user
 const loginuser = async (req, res) => {
   const { email, password } = req.body;
@@ -44,6 +80,9 @@ const loginuser = async (req, res) => {
     const user = await usermodel.findOne({ email });
     if (!user) {
       return res.status(404).json({ message: "no user found with this email" });
+    }
+     if (!user.verified) {
+      return res.status(403).json({ message: "please verify your email first" });
     }
     const rightpass = await bcrypt.compare(password, user.password);
     if (rightpass) {
@@ -54,8 +93,8 @@ const loginuser = async (req, res) => {
         role: user.role,
         token: await generatetoken(user._id),
       });
-    }else {
-        res.status(400).json({message: 'wrong password'})
+    } else {
+      res.status(400).json({ message: "wrong password" });
     }
   } catch (err) {
     console.error(err.message);
@@ -63,11 +102,11 @@ const loginuser = async (req, res) => {
 };
 
 const getusers = async (req, res) => {
-    try{
-  const users = usermodel.find({}).select('-password');
-  res.json(users)
-    }catch(err){
-        console.log(err.message)
-    }
-}
-module.exports = {registeruser, loginuser, getusers}
+  try {
+    const users = await usermodel.find({}).select("-password");
+    res.json(users);
+  } catch (err) {
+    console.log(err.message);
+  }
+};
+module.exports = { registeruser, loginuser, getusers , verifyotp};

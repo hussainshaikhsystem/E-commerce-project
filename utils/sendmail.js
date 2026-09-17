@@ -17,3 +17,4 @@ const sendemail = async (to , subject , text) => {
       console.log(err.message)
     }
 } 
+module.exports = sendemail;

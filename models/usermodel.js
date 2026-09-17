@@ -11,6 +11,8 @@ const mongoose = require('mongoose');
     verified: {
         type: Boolean,
         default: false
-    }
+    },
+    otp: String,
+    otpexpiry: Date
 })
 module.exports  =  mongoose.model('User',userschema)
