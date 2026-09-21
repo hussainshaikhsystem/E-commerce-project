@@ -1,0 +1,140 @@
+.cart-parent {
+  min-height: 80vh;
+  padding: 40px 60px;
+  margin: 0px 100px;
+}
+
+.cart-parent h1 {
+  font-size: 2.2rem;
+  color: #fafafa;
+  margin-bottom: 30px;
+}
+
+/* baaki sab same rahega, sirf .parent → .cart-parent kiya top pe */
+
+.upper-grid {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.cart-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1.5;
+  min-width: 300px;
+}
+
+.cart-box {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  background-color: #18181b;
+  padding: 24px;
+  border-radius: 12px;
+  max-width: 650px; 
+}
+
+.cart-box img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.cart-box .info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cart-box .info h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fafafa;
+}
+
+.cart-box .info h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #4ade80;
+}
+
+.btns {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.btns button {
+   width: 32px;
+  height: 32px;
+  background: #f97316;
+  color: #18181b;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btns p {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fafafa;
+  width: 26px;
+  text-align: center;
+}
+
+.cart-box .info > button {
+  width: fit-content;
+  padding: 8px 16px;
+  margin-top: 6px;
+  background: transparent;
+  color: #f87171;
+  border: 1px solid rgba(248, 113, 113, 0.4);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.total-box {
+  flex: 1;
+  min-width: 280px;
+  background: #18181b;
+  border-radius: 12px;
+  padding: 30px;
+}
+
+.total-box h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fafafa;
+  margin-bottom: 15px;
+}
+
+.total-box hr {
+  border: none;
+  border-top: 1px solid #27272a;
+  margin-bottom: 20px;
+}
+
+.checkout-btn {
+  width: 100%;
+  padding: 14px;
+  background: #f97316;
+  color: #18181b;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+}
