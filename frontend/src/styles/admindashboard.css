@@ -1,0 +1,128 @@
+.preview img {
+    width: 50px;
+    height: 50px;
+}
+.admin-parent {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    padding-bottom: 3rem;
+}
+.matrices {
+    display: flex;
+    gap: 20px;
+}
+.header {
+    width: 500px;
+    margin-top: 30px;
+    animation: fadeInDown 0.5s ease;
+}
+.preview {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.preview img {
+    margin-bottom: 0;
+}
+.header h1 {
+    font-size: 40px;
+}
+.header p {
+    font-size: 20px;
+}
+.header p span {
+    font-size: 20px;
+    color: gray;
+}
+.matrix {
+    background-color: #18181b;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 10px;
+    border-radius: 10px;
+    animation: fadeInUp 0.5s ease both;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.matrix:nth-child(1) { animation-delay: 0.05s; }
+.matrix:nth-child(2) { animation-delay: 0.1s; }
+.matrix:nth-child(3) { animation-delay: 0.15s; }
+.matrix:nth-child(4) { animation-delay: 0.2s; }
+.matrix:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(249, 115, 22, 0.15);
+}
+.matrix h3 {
+    font-size: 20px;
+    color: #a1a1aa;
+    font-weight: 500;
+}
+.matrix h1 {
+    font-size: 40px;
+    color: #f97316;
+}
+.controls {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    background-color: #18181b;
+    padding: 30px;
+    border-radius: 15px;
+    animation: fadeInUp 0.5s ease 0.25s both;
+}
+.controls h1 {
+    font-size: 25px;
+    color: #f97316 !important;
+    margin-bottom: 20px;
+}
+.btns {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+.btns button {
+    width: 200px;
+    height: 50px;
+    background-color: #3f3f46;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.btns button:hover {
+    background-color: #52525b;
+    transform: translateY(-3px);
+}
+.btns button:nth-child(1) {
+    background-color: #f97316;
+    color: white;
+}
+.btns button:nth-child(1):hover {
+    background-color: #ea580c;
+}
+.btns button img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}

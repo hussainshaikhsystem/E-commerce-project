@@ -1,0 +1,113 @@
+.profile-parent {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    margin-top: 5rem;
+    flex-direction: column;
+    gap: 3rem;
+}
+.profile-box{
+    display: flex;
+    width: 60%;
+    height: auto;
+    background-color: #18181b;
+    justify-content: center;
+    gap: 10rem;
+    padding: 4rem;
+    border-radius: 2rem;
+}
+.content h1 {
+    font-size: 40px;
+}
+.content h2 {
+    color: #a1a1aa !important;
+}
+.logout-btn {
+    background-color: #ef4444;
+    height: 50px;
+    width: 150px;
+    display: flex;
+    border: none;
+    outline: none;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    font-size: 20px;
+    font-weight: 500;
+}
+.p{
+    background-color: #2f221a;
+    color: #f97316;
+    border-radius: 10px;
+    height: 40px;
+   display: flex;
+   align-items: center;
+   padding: 20px;
+   width: 200px;
+}
+.order-history {
+     display: flex;
+    width: 60%;
+    height: auto;
+    background-color: #18181b;
+    padding: 30px;
+  
+    flex-direction: column;
+    border-radius: 2rem;
+}
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000000;
+  border-radius: 0.75rem;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.order-item:last-child {
+  margin-bottom: 0;
+}
+
+.order-details p {
+  color: #a1a1aa;
+  font-size: 14px;
+  margin: 0.25rem 0;
+}
+
+.order-details p span {
+  color: #e4e4e7;
+  font-weight: 600;
+}
+
+.order-details .total span {
+  color: #22c55e;
+}
+
+.status-badge {
+  background-color: #2f221a;
+  color: #f97316;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: capitalize;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  white-space: nowrap;
+}
+
+.status-badge.pending {
+  background-color: #2f221a;
+  color: #f97316;
+}
+
+.status-badge.completed {
+  background-color: #14291f;
+  color: #22c55e;
+}
+
+.status-badge.cancelled {
+  background-color: #2f1a1a;
+  color: #ef4444;
+}

@@ -18,7 +18,9 @@ const Cart = () => {
     <div className="total-box">
       <h2>Total: ₹{cartitems.reduce((acc, curr) => acc + curr.price * curr.qty, 0).toFixed(2)}</h2>
       <hr />
-      <button className="checkout-btn">Proceed to Checkout</button>
+      <button onClick={() => {
+        navigate('/checkout')
+      }} className="checkout-btn">Proceed to Checkout</button>
     </div>
   </div>
 </div>

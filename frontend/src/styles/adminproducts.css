@@ -1,0 +1,105 @@
+.manageproduct-parent {
+  width: 100vw;
+  height: 100vh;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.manage-box {
+  display: flex;
+  width: 70%;
+  background-color: #18181b;
+  height: auto;
+  flex-direction: column;
+  padding: 50px;
+  border-radius: 20px;
+}
+.mp-top {
+  display: flex;
+  justify-content: space-between;
+}
+.mp-top button {
+  background-color: #f66e14;
+  color: white;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  width: 150px;
+  height: 50px;
+  font-size: 17px;
+}
+.mp-header,
+.mp-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1.5fr 0.8fr 1fr 0.6fr 1.2fr;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mp-header {
+  margin-top: 10px;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid gray;
+}
+
+.mp-row {
+  padding: 1rem 0;
+  border-bottom: 1px solid #27272a;
+}
+
+.mp-row:last-child {
+  border-bottom: none;
+}
+
+.id {
+  font-size: 12px;
+  color: #a1a1aa;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.actions button {
+  padding: 0.4rem 0.9rem;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+}
+.role {
+  width: 100px;
+  height: 50px;
+  background-color: #163830;
+  color: #10b981;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+.role-user {
+  background-color: #163830;
+  color: #10b981;
+}
+
+.role-admin {
+  background-color: #3b1d0f;
+  color: #f97316;
+}
+.actions button:first-child {
+  background-color: #3b82f6;
+}
+
+.actions button:last-child {
+  background-color: #ef4444;
+}
+.users-grid {
+  grid-template-columns: 1.4fr 1.2fr 1.5fr 0.7fr 1fr !important;
+}

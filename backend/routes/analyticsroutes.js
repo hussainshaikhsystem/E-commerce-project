@@ -7,6 +7,6 @@ const {
 } = require("../controllers/analyticscontroller.js");
 
 const router = express.Router();
-router.post("/", protect, admin, getadminstats);
+router.get("/", protect, admin, getadminstats);
 
 module.exports = router;
