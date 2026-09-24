@@ -6,13 +6,14 @@ const userroutes = require('./routes/authroutes.js')
 const productroutes = require('./routes/productroutes.js')
 const orderroutes = require('./routes/orderroutes.js')
 const paymentroutes = require('./routes/paymentroutes.js')
-const analyticsroutes = require('./routes/analyticsroutes.js')
+const analyticsroutes = require('./routes/analyticsroutes.js');
+const path = require("path")
 dotenv.config();
 connectdb();
 const app = express();
 app.use(cors(
   {
-    origin: 'http://localhost:5173',
+    origin:process.env.FRONTEND_URL ||  'http://localhost:5173',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
   }
@@ -32,7 +33,7 @@ const port = process.env.PORT || 5000;
 if(process.env.NODE_ENV === 'production'){
   app.use(express.static(path.join(__dirname, '../frontend/dist')));
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'))
+    res.sendFile(path.resolve(__dirname, '../frontend/dist/index.html'))
   });
 }else {
   app.get('/', (req, res) => {
