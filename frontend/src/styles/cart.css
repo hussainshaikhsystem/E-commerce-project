@@ -34,7 +34,7 @@
   background-color: #18181b;
   padding: 24px;
   border-radius: 12px;
-  max-width: 650px; 
+  max-width: 650px;
 }
 
 .cart-box img {
@@ -71,7 +71,7 @@
 }
 
 .btns button {
-   width: 32px;
+  width: 32px;
   height: 32px;
   background: #f97316;
   color: #18181b;
@@ -80,10 +80,10 @@
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column
 }
 
 .btns p {
@@ -140,32 +140,32 @@
   cursor: pointer;
 }
 @media (max-width: 768px) {
-    .cart-parent {
-      margin: 0;
-      padding: 30px 16px;
-    }
-    .upper-grid{
-      flex-direction: column;
-    }
-    .cart-grid{
-      width: 100%;
-    }
-     .cart-box {
-        width: 100%;
-        max-width: none;
-        box-sizing: border-box;
-        margin: 0;
-    }
+  .cart-parent {
+    margin: 0;
+    padding: 30px 16px;
+  }
+  .upper-grid {
+    flex-direction: column;
+  }
+  .cart-grid {
+    width: 100%;
+  }
+  .cart-box {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+    margin: 0;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .cart-box img {
+    width: 100%;
+    object-fit: contain;
+  }
+  
 
-    .total-box {
-        width: 100%;
-        box-sizing: border-box;
-    }
-    .btns button {
-      width: 16px;
-      height: 5px;
-    }
-    .btns {
-      display: flex;
-    }
+  .total-box {
+    width: 100%;
+    box-sizing: border-box;
+  }
 }
