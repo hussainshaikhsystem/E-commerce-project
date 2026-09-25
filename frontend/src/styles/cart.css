@@ -162,7 +162,10 @@
     width: 100%;
     object-fit: contain;
   }
-  
+  .btns {
+    display: flex;
+    flex-direction: column;
+  }
 
   .total-box {
     width: 100%;

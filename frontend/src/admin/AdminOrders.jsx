@@ -45,7 +45,7 @@ const AdminOrders = () => {
         <div className="mp-top">
           <h1>Manage Orders</h1>
         </div>
-        <div className="mp-header">
+        <div className="mp-header orders-grid">
           <h3>Order ID</h3>
           <h3>User</h3>
           <h3>Total</h3>
@@ -54,12 +54,12 @@ const AdminOrders = () => {
         </div>
         <div className="mps">
           {orders.map((order) => (
-            <div className="mp-row" key={order._id || order.id}>
+            <div className="mp-row mp-order" key={order._id || order.id}>
               <h3 className="id">{order._id}</h3>
               <h3>{order.user.fullname ||  'N/A'}</h3>
               <h3>₹{order.totalamount}</h3>
               <h3>{new Date(order.createdAt).toLocaleDateString()}</h3>
-              <select value={order.status} onChange={(e) => {
+              <select className="select" value={order.status} onChange={(e) => {
                 handlestatuschange(order._id, e.target.value)
               }} name="" id="">
                 <option value="pending">Pending</option>

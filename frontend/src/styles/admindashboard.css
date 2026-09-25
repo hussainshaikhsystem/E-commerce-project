@@ -30,6 +30,8 @@
 }
 .header h1 {
     font-size: 40px;
+      align-self: center;
+      padding-top: 17px;
 }
 .header p {
     font-size: 20px;
@@ -125,4 +127,38 @@
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px){
+    .admin-parent{
+        width: 100%;
+        padding: 0px 24px;
+    }
+    .matrices {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 0 30px;
+        margin: 0;
+    }
+    .header{
+   width: 100%;
+        padding: 0px;
+        margin: 10px;
+        padding: 0px 22px;
+    }
+    
+    .preview h1 {
+        font-size: 30px;
+      
+    }
+    .matrix{
+       width: 100%;
+       padding: 20px;
+      
+    }
+   .controls {
+    width: 100%;
+   
+   }
 }

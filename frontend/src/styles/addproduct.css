@@ -57,3 +57,39 @@
      align-items: center;
      padding-top: 10px;
 }
+@media (max-width: 768px){
+    .addproduct-parent{
+        width: 100%;
+        padding: 0px 40px;
+    }
+    .add-product{
+        width: 100%;
+    }
+    .add-product h1{
+        font-size: 20px;
+    }
+    .add-product form input {
+        height: 25px;
+        font-size: 10px;
+        box-sizing: border-box;
+    }
+    .add-product form textarea {
+        height: 45px;
+        font-size: 10px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .add-product form span {
+        font-size: 10px;
+    }
+    .add-product form button {
+        font-size: 13px;
+        height: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       
+    }
+}

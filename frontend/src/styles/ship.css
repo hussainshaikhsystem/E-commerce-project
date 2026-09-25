@@ -1,11 +1,15 @@
+* {
+    box-sizing: border-box;
+}
 .shipping-parent {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
 
     align-items: center;
    flex-direction: column;
    margin-top: 20px;
+   padding-bottom: 30px;
 }
 .shipping-box {
     display: flex;
@@ -34,4 +38,21 @@
     border-radius: 15px;
     color:white;
     font-size: 20px;
+}
+@media (max-width: 768px) {
+    .shipping-parent {
+        width: 100%;
+       box-sizing: border-box;
+       padding: 20px 16px 30px;
+    }
+    .shipping-box {
+       width: 100%;
+       max-width: 100%;
+       box-sizing: border-box;
+       margin: 20px 0 0;
+       padding: 25px 20px;
+    }
+    .inputs input {
+        width: 100%;
+    }
 }
