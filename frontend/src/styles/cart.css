@@ -83,6 +83,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column
 }
 
 .btns p {
@@ -137,4 +138,34 @@
   font-weight: 700;
   font-size: 1rem;
   cursor: pointer;
+}
+@media (max-width: 768px) {
+    .cart-parent {
+      margin: 0;
+      padding: 30px 16px;
+    }
+    .upper-grid{
+      flex-direction: column;
+    }
+    .cart-grid{
+      width: 100%;
+    }
+     .cart-box {
+        width: 100%;
+        max-width: none;
+        box-sizing: border-box;
+        margin: 0;
+    }
+
+    .total-box {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .btns button {
+      width: 16px;
+      height: 5px;
+    }
+    .btns {
+      display: flex;
+    }
 }
