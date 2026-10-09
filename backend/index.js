@@ -14,7 +14,7 @@ const app = express();
 app.use(
   cors({
     origin: [
-     
+      "http://localhost:5173",
       "https://e-commerce-project-inky.vercel.app",
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
