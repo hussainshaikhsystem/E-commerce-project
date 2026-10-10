@@ -181,7 +181,9 @@
   font-size: 1.1rem;
   margin-bottom: 30px;
 }
-
+.loading {
+  
+}
 @media (max-width: 900px) {
   .product-detail {
     grid-template-columns: 1fr;

@@ -8,8 +8,7 @@ const Home = () => {
   useEffect(() => {
     const fetchproducts = async () => {
       try {
-       
-        const res = await axiosInstance.get('/products');
+        const res = await axiosInstance.get("/products");
         setproducts(res.data.slice(0, 4));
       } catch (err) {
         console.log("unable to fetch products");
@@ -28,17 +27,24 @@ const Home = () => {
           products and services
         </p>
       </div>
-     <h2 className="heading">Featured Products</h2>
-    {loading ? (
-     <div>Loading...</div>
-    ) : (
-     <div className="product-grid">
-      {products.map((product) => (
-       <Productcard key={product._id} product={product} />
-      ))}
-     </div>
-    )}
-
+      <h2 className="heading">Featured Products</h2>
+      {loading ? (
+        <div className="loading">
+          <div className="loading">
+            <div className="loading-spinner"></div>
+            <p className="loading-title">Server is waking up...</p>
+            <p className="loading-text">
+              This can take up to a minute on the first visit.
+            </p>
+          </div>
+        </div>
+      ) : (
+        <div className="product-grid">
+          {products.map((product) => (
+            <Productcard key={product._id} product={product} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
