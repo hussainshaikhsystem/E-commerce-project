@@ -71,7 +71,7 @@ const Checkout = () => {
       const orderdata = orderes.data;
 
       const options = {
-        key: orderdata.key || "rzp_test_dummykey123",
+        key: orderdata.key ,
         amount: orderdata.amount,
         currency: orderdata.currency,
         name: "Shopnest",
@@ -104,6 +104,7 @@ const Checkout = () => {
       const rzpl = new window.Razorpay(options);
       rzpl.open();
     } catch (err) {
+      console.error(err.response?.data || err)
       // order creation itself failed (e.g. Razorpay keys unconfigured on backend)
       askbypass(
         "Razorpay keys unconfigured on backend. Use Student Bypass Mode to place test order?",
