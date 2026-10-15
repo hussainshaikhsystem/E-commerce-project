@@ -19,7 +19,7 @@ const Checkout = () => {
     postalcode: "",
     country: "",
   });
-
+  const [loading, setloading] = useState(false);
   const totalprice = cartitems.reduce(
     (acc, item) => acc + item.price * item.qty,
     0,
@@ -48,23 +48,8 @@ const Checkout = () => {
     }
   };
 
-  // Student bypass: skip Razorpay entirely, save order directly
-  const bypasspayment = () => {
-    saveorder("bypass_txn_" + Date.now());
-  };
-
-  // Shared prompt shown whenever Razorpay can't be used
-  const askbypass = (message) => {
-    const usebypass = window.confirm(message);
-    if (usebypass) {
-      bypasspayment();
-    } else {
-      alert("Payment cancelled");
-    }
-  };
-
   const handlepayment = async () => {
-    
+    setloading(true);
     try {
       const orderes = await axiosInstance.post("/payment/order", {
         amount: totalprice,
@@ -175,7 +160,7 @@ const Checkout = () => {
         </div>
         <div className="payment-box">
           <h2>Total to Pay: ₹{totalprice.toFixed(2)}</h2>
-          <button type="submit">Pay Now</button>
+          <button type="submit">{loading ? "Processing..." : "Pay Now"}</button>
         </div>
       </div>
     </form>
