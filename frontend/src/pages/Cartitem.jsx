@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/cart.css";
 import { useDispatch } from "react-redux";
-import { clearcart, increaseqty } from "../redux/cartslice.js";
+import { clearcart, increaseqty, removefromcart } from "../redux/cartslice.js";
 import { decreaseqty } from "../redux/cartslice.js";
 const Cartitem = ({ cartproduct }) => {
   const dispatch = useDispatch();
@@ -30,7 +30,7 @@ const Cartitem = ({ cartproduct }) => {
             </button>
           </div>
           <button onClick={() => {
-            dispatch(clearcart(cartproduct._id))
+            dispatch(removefromcart(cartproduct._id))
           }}>Remove</button>
         </div>
       </div>
