@@ -74,9 +74,7 @@ const Checkout = () => {
             saveorder(response.razorpay_payment_id);
           } catch (err) {
             console.error("order creation failed:", err.response?.data || err);
-            askbypass(
-              "Payment verification failed. Use Student Bypass Mode to place test order?",
-            );
+           
           }
         },
         prefill: {
@@ -93,10 +91,6 @@ const Checkout = () => {
       rzpl.open();
     } catch (err) {
       console.error(err.response?.data || err);
-      // order creation itself failed (e.g. Razorpay keys unconfigured on backend)
-      askbypass(
-        "Razorpay keys unconfigured on backend. Use Student Bypass Mode to place test order?",
-      );
     }
   };
 
