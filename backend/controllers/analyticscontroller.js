@@ -7,10 +7,10 @@ const getadminstats = async (req, res) => {
     const totalorders = await ordermodel.countDocuments({});
     const totalproducts = await productmodel.countDocuments({});
     const orders = await ordermodel.find({});
-    const totalrevenuedata = orders.reduce(
+    const totalrevenuedata = Math.round(orders.reduce(
       (acc, order) => acc + order.totalamount,
       0,
-    );
+    ));
     res.status(200).json({
       totalorders,
       totalproducts,
