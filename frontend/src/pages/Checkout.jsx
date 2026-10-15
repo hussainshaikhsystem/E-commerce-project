@@ -64,7 +64,7 @@ const Checkout = () => {
   };
 
   const handlepayment = async () => {
-    console.log("handler fired", response);
+    
     try {
       const orderes = await axiosInstance.post("/payment/order", {
         amount: totalprice,
