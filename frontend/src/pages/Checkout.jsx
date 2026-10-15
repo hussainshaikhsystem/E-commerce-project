@@ -71,11 +71,15 @@ const Checkout = () => {
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_signature: response.razorpay_signature,
             });
-            saveorder(response.razorpay_payment_id);
+           await saveorder(response.razorpay_payment_id);
           } catch (err) {
             console.error("order creation failed:", err.response?.data || err);
-           
+            alert("Payment verification failed, Contact support");
+            setloading(false)
           }
+        },
+        modal: {
+          ondismiss: () => setloading(false),
         },
         prefill: {
           name: address.fullname,

@@ -1,5 +1,5 @@
 const ordermodel = require("../models/ordermodel.js");
-const sendemail = require("../utils/sendmail.js");
+const sendemail = require("../utils/sendmail.js")
 
 const createorder = async (req, res) => {
   try {
@@ -16,9 +16,12 @@ const createorder = async (req, res) => {
         paymentid,
         user: req.user._id,
       });
-      const message = `Dear ${req.user.fullname}, \n \n Thank you for order ! Your order has been placed \n Order ID: ${order._id} \n Total Amount: ${order.totalamount} \n Payment ID: ${order.paymentid} \n \n Regards, \n Shopnest Team Shipping Address: \n ${order.address.street} \n ${order.address.city} \n ${order.address.postalcode}`;
-      await sendemail(req.user.email, "Order created", message);
       res.status(201).json({ message: "Order created successfully", order });
+     const message = `Dear ${req.user.fullname}, ...`; // tera same message
+
+sendemail(req.user.email, "Order created", message).catch((err) =>
+  console.error("email failed:", err),
+);
     }
   } catch (err) {
     res.status(400).json({ message: "unable to create order" });
