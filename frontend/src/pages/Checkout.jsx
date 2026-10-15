@@ -28,20 +28,20 @@ const Checkout = () => {
   // Saves the order after successful (or bypassed) payment
   const saveorder = async (paymentid) => {
     try {
-       const orderItems = cartitems.map((item) => ({
-      productid: item._id,
-      qty: item.qty,
-      price: item.price,
-    }));
+      const orderItems = cartitems.map((item) => ({
+        productid: item._id,
+        qty: item.qty,
+        price: item.price,
+      }));
 
-    await axiosInstance.post("/orders", {
-      items: orderItems,
-      totalamount: totalprice,
-      address,
-      paymentid,
-    });
-    dispatch(clearcart());
-    navigate("/ordersuccess");
+      await axiosInstance.post("/orders", {
+        items: orderItems,
+        totalamount: totalprice,
+        address,
+        paymentid,
+      });
+      dispatch(clearcart());
+      navigate("/ordersuccess");
     } catch (err) {
       console.error(err.response?.data || err.message);
       alert("Order saving failed");
@@ -64,6 +64,7 @@ const Checkout = () => {
   };
 
   const handlepayment = async () => {
+    console.log("handler fired", response);
     try {
       const orderes = await axiosInstance.post("/payment/order", {
         amount: totalprice,
@@ -71,13 +72,14 @@ const Checkout = () => {
       const orderdata = orderes.data;
 
       const options = {
-        key: orderdata.key ,
+        key: orderdata.key,
         amount: orderdata.amount,
         currency: orderdata.currency,
         name: "Shopnest",
         description: "Test Transaction",
         order_id: orderdata.id,
         handler: async function (response) {
+          console.log("handler fired", response);
           try {
             await axiosInstance.post("/payment/verify", {
               razorpay_order_id: response.razorpay_order_id,
@@ -86,6 +88,7 @@ const Checkout = () => {
             });
             saveorder(response.razorpay_payment_id);
           } catch (err) {
+            console.error("order creation failed:", err.response?.data || err);
             askbypass(
               "Payment verification failed. Use Student Bypass Mode to place test order?",
             );
@@ -104,7 +107,7 @@ const Checkout = () => {
       const rzpl = new window.Razorpay(options);
       rzpl.open();
     } catch (err) {
-      console.error(err.response?.data || err)
+      console.error(err.response?.data || err);
       // order creation itself failed (e.g. Razorpay keys unconfigured on backend)
       askbypass(
         "Razorpay keys unconfigured on backend. Use Student Bypass Mode to place test order?",
